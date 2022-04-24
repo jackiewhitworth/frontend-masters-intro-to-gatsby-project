@@ -2,11 +2,12 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import Layout from './layout.js';
 
-export default function PostLayout({ children, ...props }) {
+export default function PostLayout({ children, pageContext }) {
+  const { title, description } = pageContext.frontmatter;
   return (
-    <Layout>
+    <Layout title={title} description={description}>
       {children}
-      <pre>{JSON.stringify(props, null, 2)}</pre>
+      <Link to="/">&larr; back</Link>
     </Layout>
   );
 }
